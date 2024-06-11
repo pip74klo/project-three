@@ -126,5 +126,7 @@ body {
     
   }
 
-  
+  #victory-message{
+    font-size: 1em;
+  }
 }
