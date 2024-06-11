@@ -105,3 +105,26 @@ body {
     height: 4em;
   }
 }
+
+@media (max-width: 376px){
+
+  .heading {
+    font-size: 1.5em;
+  }
+  
+  .desc {
+    font-size: 1em;
+  }
+  .card {
+    width: 3.5em;
+    height: 3.5em;
+  }
+
+  .card-front,
+  .card-back {
+    border-radius: 0.3em;
+    
+  }
+
+  
+}
