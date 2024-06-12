@@ -1,7 +1,13 @@
 const GAME_NODE = document.querySelector("#game-board"),
-  VICTORY_TEXT = document.querySelector("#victory-message"),
-  START_GAME_BUTTON = document.querySelector("#new-game-button");
+      VICTORY_TEXT = document.querySelector("#victory-message"),
+      START_GAME_BUTTON = document.querySelector("#new-game-button"),
+      currentScore = document.querySelector('.current-score p'),
+      bestScore = document.querySelector('.best-score p');
 
+
+      
+let currentCount;
+let bestCount = 0;
 const VISIBLE_CARD_CLASSNAME = "visible";
 
 const CARD_FLIP_TIMEOUT_MS = 500;
@@ -15,8 +21,15 @@ let VISIBLE_CARDS = [];
 START_GAME_BUTTON.addEventListener('click', startGame);
 
 function startGame() {
-  [GAME_NODE, VICTORY_TEXT].forEach((node) => {
-    node.innerHTML = '';
+  currentCount = 0;
+  [GAME_NODE, VICTORY_TEXT, currentScore].forEach((node) => {
+    if (node === currentScore){
+      setTimeout(() => {
+        node.innerHTML = currentCount;
+      }, 300)
+    } else {
+      node.innerHTML = '';
+    }
   });
 
   const CARD_VALUES = generateArray(CARD_ELEMENTS, CARD_AMOUNT);
@@ -83,13 +96,13 @@ function renderCard(emoji){
 
   card.addEventListener('click', () => {
     handleCardClick(card)
+
   })
 
   GAME_NODE.appendChild(card);
 }
 
 function handleCardClick(card) {
-
   if (card.classList.contains(VISIBLE_CARD_CLASSNAME)){
     return
   }
@@ -98,10 +111,22 @@ function handleCardClick(card) {
     const visibleCardNodes = document.querySelectorAll('.visible');
 
     const isVictory = visibleCardNodes.length === CARD_AMOUNT;
+
     const victoryMessage = 'Поздравляю, вы выйграли!'
     if (isVictory){
       VICTORY_TEXT.textContent = victoryMessage;
-    } 
+      if (bestCount === 0){
+        bestCount = currentCount
+        bestScore.textContent = bestCount
+      } else if (currentCount > bestCount){
+        bestScore.textContent = bestCount
+      } else {
+        bestCount = currentCount
+        bestScore.textContent = bestCount
+      }
+    }
+    
+    
   }
 
   card.querySelector('.card-inner').addEventListener('transitionend', checkVictory);
@@ -124,8 +149,15 @@ function handleCardClick(card) {
       lastCard.classList.remove('visible');
       prelastCard.classList.remove('visible');
     }, CARD_FLIP_TIMEOUT_MS)
-    
   }
+  currentCount++
+    if (currentCount % 1 == 0){
+      setTimeout(()=> {
+        currentScore.textContent = currentCount
+      },300)
+      
+    }
+  
 }
 
 
