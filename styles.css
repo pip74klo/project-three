@@ -1,4 +1,30 @@
-@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap'); */
+
+@font-face {
+  font-family: 'LuckiestGuy';
+  src: local('LuckiestGuy Regular'), local('LuckiestGuy-Regular'),
+      url('fonts/LuckiestGuy-Regular.ttf') format('ttf');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'LuckiestGuy';
+  src: local('LuckiestGuy Woff2'), local('LuckiestGuy-Woff2'),
+      url('fonts/LuckiestGuy-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'LuckiestGuy';
+  src: local('LuckiestGuy Woff'), local('LuckiestGuy-Woff'),
+      url('fonts/LuckiestGuy-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 
 html {
   --primary-color: #161f6d;
@@ -23,7 +49,7 @@ body {
   background-color: var(--secondary-color);
   color: var(--primary-color);
   /* font-family: "Luckiest Guy", cursive; */
-  font-family: 'Luckiest Guy', Arial, sans-serif;
+  font-family: 'LuckiestGuy', Arial, sans-serif;
   letter-spacing: 0.15em;
 }
 
@@ -67,7 +93,7 @@ body {
   font-size: 1em;
   font-weight: bold;
   /* font-family: "Luckiest Guy", cursive; */
-  font-family: 'Luckiest Guy', Arial, sans-serif;
+  font-family: 'LuckiestGuy', Arial, sans-serif;
   letter-spacing: 0.15em;
   margin-bottom: 0.5em;
 }
@@ -99,7 +125,7 @@ body {
   font-size: 1em;
   border-radius: 1.5em;
   /* font-family: "Luckiest Guy", cursive; */
-  font-family: 'Luckiest Guy', Arial, sans-serif;
+  font-family: 'LuckiestGuy', Arial, sans-serif;
   letter-spacing: 0.15em;
   text-transform: uppercase;
   cursor: pointer;
